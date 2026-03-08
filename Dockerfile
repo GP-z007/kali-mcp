@@ -79,7 +79,9 @@ RUN git clone --depth 1 https://github.com/s0md3v/Photon.git /opt/photon && \
 # Compatibility wrappers for common command names expected by MCP tools.
 RUN printf '#!/bin/sh\nif command -v sherlock >/dev/null 2>&1; then exec sherlock "$@"; fi\nif command -v maigret >/dev/null 2>&1; then exec maigret "$@"; fi\necho "whatsmyname fallback unavailable" >&2\nexit 127\n' > /usr/local/bin/whatsmyname && \
     printf '#!/bin/sh\nif command -v eyewitness >/dev/null 2>&1; then exec eyewitness "$@"; fi\nif [ -f /usr/share/eyewitness/EyeWitness.py ]; then exec python3 /usr/share/eyewitness/EyeWitness.py "$@"; fi\nif [ -f /opt/EyeWitness/Python/EyeWitness.py ]; then exec python3 /opt/EyeWitness/Python/EyeWitness.py "$@"; fi\necho "EyeWitness not available" >&2\nexit 127\n' > /usr/local/bin/EyeWitness && \
-    chmod +x /usr/local/bin/whatsmyname /usr/local/bin/EyeWitness
+    printf '#!/bin/sh\nif command -v pypykatz >/dev/null 2>&1; then exec pypykatz "$@"; fi\necho "mimikatz is Windows-only; pypykatz fallback not installed" >&2\nexit 127\n' > /usr/local/bin/mimikatz && \
+    printf '#!/bin/sh\nif command -v metagoofil >/dev/null 2>&1; then exec metagoofil "$@"; fi\necho "foca CLI unavailable; metagoofil fallback not installed" >&2\nexit 127\n' > /usr/local/bin/foca && \
+    chmod +x /usr/local/bin/whatsmyname /usr/local/bin/EyeWitness /usr/local/bin/mimikatz /usr/local/bin/foca
 
 COPY kali_pentest_server.py .
 
