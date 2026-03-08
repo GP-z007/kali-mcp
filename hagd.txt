@@ -48,6 +48,21 @@ registry:
       - name: commix_scan
       - name: macchanger_randomize
       - name: mimikatz_status
+      - name: maigret_username_check
+      - name: sherlock_username_check
+      - name: whatsmyname_username_check
+      - name: amass_enum_passive
+      - name: theharvester_passive
+      - name: subfinder_enum
+      - name: fierce_dns_scan
+      - name: dnsrecon_scan
+      - name: exiftool_metadata
+      - name: metagoofil_scan
+      - name: foca_cli_status
+      - name: photon_scan
+      - name: finalrecon_scan
+      - name: spiderfoot_cli_scan
+      - name: eyewitness_cli
       - name: google_dork_builder
       - name: whois_lookup
       - name: dns_lookup

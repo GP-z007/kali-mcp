@@ -19,6 +19,30 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     exploitdb \
     hping3 \
     slowhttptest \
+    hydra \
+    aircrack-ng \
+    john \
+    netcat-openbsd \
+    responder \
+    bettercap \
+    hashcat \
+    wifite \
+    tshark \
+    gobuster \
+    ettercap-text-only \
+    snort \
+    commix \
+    macchanger \
+    amass \
+    theharvester \
+    subfinder \
+    fierce \
+    dnsrecon \
+    libimage-exiftool-perl \
+    metagoofil \
+    spiderfoot \
+    eyewitness \
+    traceroute \
     curl \
     wget \
     git \
@@ -38,6 +62,24 @@ ENV PATH="/app/venv/bin:$PATH"
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Install additional Python OSINT tools that provide CLI entrypoints.
+RUN pip install --no-cache-dir maigret sherlock-project
+
+# Install Linux-friendly credential-analysis fallback for mimikatz-like workflows.
+RUN pip install --no-cache-dir pypykatz
+
+# Install Photon and FinalRecon from source and expose executable wrappers.
+RUN git clone --depth 1 https://github.com/s0md3v/Photon.git /opt/photon && \
+    git clone --depth 1 https://github.com/thewhiteh4t/FinalRecon.git /opt/finalrecon && \
+    printf '#!/bin/sh\nexec python3 /opt/photon/photon.py "$@"\n' > /usr/local/bin/photon && \
+    printf '#!/bin/sh\nexec python3 /opt/finalrecon/finalrecon.py "$@"\n' > /usr/local/bin/finalrecon && \
+    chmod +x /usr/local/bin/photon /usr/local/bin/finalrecon
+
+# Compatibility wrappers for common command names expected by MCP tools.
+RUN printf '#!/bin/sh\nif command -v sherlock >/dev/null 2>&1; then exec sherlock "$@"; fi\nif command -v maigret >/dev/null 2>&1; then exec maigret "$@"; fi\necho "whatsmyname fallback unavailable" >&2\nexit 127\n' > /usr/local/bin/whatsmyname && \
+    printf '#!/bin/sh\nif command -v eyewitness >/dev/null 2>&1; then exec eyewitness "$@"; fi\nif [ -f /usr/share/eyewitness/EyeWitness.py ]; then exec python3 /usr/share/eyewitness/EyeWitness.py "$@"; fi\nif [ -f /opt/EyeWitness/Python/EyeWitness.py ]; then exec python3 /opt/EyeWitness/Python/EyeWitness.py "$@"; fi\necho "EyeWitness not available" >&2\nexit 127\n' > /usr/local/bin/EyeWitness && \
+    chmod +x /usr/local/bin/whatsmyname /usr/local/bin/EyeWitness
 
 COPY kali_pentest_server.py .
 
