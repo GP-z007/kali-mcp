@@ -1,0 +1,73 @@
+version: 2
+name: custom
+displayName: Custom MCP Servers
+registry:
+  kali-pentest:
+    description: "Kali Linux web pentesting tools for educational use in local lab environments"
+    title: "Kali Pentest"
+    type: server
+    dateAdded: "2026-03-09T00:00:00Z"
+    image: kali-pentest-mcp-server:latest
+    ref: ""
+    readme: ""
+    toolsUrl: ""
+    source: ""
+    upstream: ""
+    icon: ""
+    tools:
+      - name: nmap_scan
+      - name: nmap_vuln_scan
+      - name: nmap_os_detect
+      - name: nikto_scan
+      - name: sqlmap_scan
+      - name: wpscan_scan
+      - name: dirb_scan
+      - name: searchsploit
+      - name: searchsploit_detail
+      - name: hping3_ping
+      - name: hping3_syn_flood_test
+      - name: ddos_lab_stress_test
+      - name: slowhttptest_slowloris
+      - name: slowhttptest_slowpost
+      - name: slowloris_attack
+      - name: metasploit_search
+      - name: metasploit_dos_list
+      - name: metasploit_run_module
+      - name: hydra_bruteforce
+      - name: aircrack_handshake_check
+      - name: john_crack_hashfile
+      - name: netcat_banner_grab
+      - name: responder_analyze
+      - name: bettercap_net_probe
+      - name: hashcat_crack_hashfile
+      - name: wifite_scan
+      - name: tshark_capture
+      - name: gobuster_dir_scan
+      - name: ettercap_scan
+      - name: snort_check_config
+      - name: commix_scan
+      - name: macchanger_randomize
+      - name: mimikatz_status
+      - name: google_dork_builder
+      - name: whois_lookup
+      - name: dns_lookup
+      - name: http_headers
+      - name: http_get
+      - name: crtsh_subdomain_enum
+      - name: wayback_urls
+      - name: ssl_certificate_info
+      - name: security_headers_check
+      - name: reverse_dns_lookup
+      - name: traceroute_scan
+      - name: list_tools
+    metadata:
+      category: security
+      tags:
+        - pentest
+        - security
+        - kali
+        - nmap
+        - web
+        - education
+      license: MIT
+      owner: local
