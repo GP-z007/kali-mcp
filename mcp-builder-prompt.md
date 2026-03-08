@@ -1,33 +1,3 @@
----
-up: 
-related: 
-created: 2025-08-26 12:07
-daily_note: '[[4 - Archives/1 - Daily Notes/2025-08-26|2025-08-26]]'
-aliases: 
-tags:
----
-
-  
-
-# NetworkChuck's MCP Server Builder Prompt
-
-  
-
-## INITIAL CLARIFICATIONS
-
-  
-
-Before generating the MCP server, please provide:
-
-1. **Service/Tool Name**: What service or functionality will this MCP server provide?
-
-2. **API Documentation**: If this integrates with an API, please provide the documentation URL
-
-3. **Required Features**: List the specific features/tools you want implemented
-
-4. **Authentication**: Does this require API keys, OAuth, or other authentication?
-
-5. **Data Sources**: Will this access files, databases, APIs, or other data sources?
 
 Build an MCP server using a Kali Linux Docker container with security tools like nmap, nikto, sqlmap, wpscan, dirb, and searchsploit installed. Create Python functions wrapped with FastMCP decorators for each tool, sanitizing inputs and returning formatted text results. Run as non-root with proper capabilities set for network tools, and include basic environment variables for configuration.
 
@@ -35,20 +5,13 @@ Create it in a way where I can perform web pentests on servers in my own environ
 
 If any information is missing or unclear, I will ask for clarification before proceeding.
 
-  
-
----
-
-  
 
 # INSTRUCTIONS FOR THE LLM
 
-  
 
 ## YOUR ROLE
 
 You are an expert MCP (Model Context Protocol) server developer. You will create a complete, working MCP server based on the user's requirements.
-
   
 
 ## CLARIFICATION PROCESS
